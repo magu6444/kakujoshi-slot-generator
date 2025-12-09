@@ -165,25 +165,75 @@ function loadResultImage() {
     const resultImage = document.getElementById('result-image');
     const placeholder = document.querySelector('.image-placeholder');
 
-    // 画像ファイル名を生成（仮の命名規則）
-    // 実際のファイル名に合わせて調整が必要
-    const imagePath = `demo_images/${selectedParticle1}_${selectedParticle2}.png`;
-
-    resultImage.src = imagePath;
-
-    resultImage.onload = () => {
-        placeholder.style.display = 'none';
-        resultImage.classList.add('loaded');
+    // 30通りの組み合わせとファイル名のマッピング
+    // ファイル名は時系列順（古い順）が、分析の30通り（1. がを 〜 30. とへ）に対応
+    // ls -t の結果は新しい順なので、下から30個を使う（最新の1個は除外）
+    const imageMapping = {
+        'がを': 'AI画像生成 1955193831558018738.png',       // 31番目（最古）
+        'がに': 'AI画像生成 3 (1).png',                     // 30番目
+        'がで': 'AI画像生成 3 (2).png',                     // 29番目
+        'がと': 'AI画像生成 3.png',                         // 28番目
+        'がへ': 'AI画像生成 PixAI.png',                     // 27番目
+        'をが': 'AI画像生成 画像 (1).png',                  // 26番目
+        'をに': 'AI画像生成 画像 (2).png',                  // 25番目
+        'をで': 'AI画像生成 画像 (3).png',                  // 24番目
+        'をと': 'AI画像生成 画像 (4).png',                  // 23番目
+        'をへ': 'AI画像生成 画像 (5).png',                  //  22番目
+        'にが': 'AI画像生成 画像 (6).png',                  // 21番目
+        'にを': 'AI画像生成 画像.png',                      // 20番目
+        'にで': 'PixAI 画像生成 (1).png',                   // 19番目
+        'にと': 'PixAI 画像生成 (10).png',                  // 18番目
+        'にへ': 'PixAI 画像生成 (11).png',                  // 17番目
+        'でが': 'PixAI 画像生成 (12).png',                  // 16番目
+        'でを': 'PixAI 画像生成 (13).png',                  // 15番目
+        'でに': 'PixAI 画像生成 (14).png',                  // 14番目
+        'でと': 'PixAI 画像生成 (2).png',                   // 13番目
+        'でへ': 'PixAI 画像生成 (3).png',                   // 12番目
+        'とが': 'PixAI 画像生成 (4).png',                   // 11番目
+        'とを': 'PixAI 画像生成 (5).png',                   // 10番目
+        'とに': 'PixAI 画像生成 (6).png',                   // 9番目
+        'とで': 'PixAI 画像生成 (7).png',                   // 8番目
+        'とへ': 'PixAI 画像生成 (8).png',                   // 7番目
+        'へが': 'PixAI 画像生成 (9).png',                   // 6番目
+        'へを': 'PixAI 画像生成 3 (1).png',                 // 5番目
+        'へに': 'PixAI 画像生成 3 (2).png',                 // 4番目
+        'へで': 'PixAI 画像生成 3 (3).png',                 // 3番目
+        'へと': 'PixAI 画像生成 3.png'                      // 2番目
+        // 1番目（最新）の「PixAI 画像生成.png」は使用しない
     };
 
-    resultImage.onerror = () => {
+    // 助詞の組み合わせキーを作成
+    const combinationKey = `${selectedParticle1}${selectedParticle2}`;
+
+    // マッピングから画像ファイル名を取得
+    const filename = imageMapping[combinationKey];
+
+    if (filename) {
+        const imagePath = `demo_images/${filename}`;
+        resultImage.src = imagePath;
+
+        resultImage.onload = () => {
+            placeholder.style.display = 'none';
+            resultImage.classList.add('loaded');
+        };
+
+        resultImage.onerror = () => {
+            placeholder.innerHTML = `
+                <p>画像が見つかりません</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">
+                    ${selectedParticle1} × ${selectedParticle2} の組み合わせ<br>
+                    ファイル名: ${filename}
+                </p>
+            `;
+        };
+    } else {
         placeholder.innerHTML = `
-            <p>画像が見つかりません</p>
+            <p>マッピングエラー</p>
             <p style="font-size: 0.9rem; margin-top: 1rem;">
-                ${selectedParticle1} × ${selectedParticle2} の組み合わせ
+                ${selectedParticle1} × ${selectedParticle2} の組み合わせが見つかりません
             </p>
         `;
-    };
+    }
 }
 
 // ゲームリセット
