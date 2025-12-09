@@ -4,7 +4,9 @@
 
 ## デモ
 
-🎰 [デモページを見る](https://[your-username].github.io/kakujoshi-slot-generator/)
+🎰 [スロットジェネレーター](https://magu6444.github.io/kakujoshi-slot-generator/)
+🎮 [インタラクティブデモ](https://magu6444.github.io/kakujoshi-slot-generator/demo.html)
+📊 [分析ログページ](https://magu6444.github.io/kakujoshi-slot-generator/analysis-log.html)
 
 ## 特徴
 

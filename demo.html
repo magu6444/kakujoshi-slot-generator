@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>がをにでとへ - 格助詞デモ</title>
+    <link rel="stylesheet" href="demo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- 画面1: サムネイル画面 -->
+    <div id="screen1" class="screen active">
+        <div class="split-container">
+            <!-- 左側: 猫イラスト集 -->
+            <div class="left-panel">
+                <div class="thumbnail-grid">
+                    <img src="/Users/yoshinonakashima/.gemini/antigravity/brain/c10fc989-97d4-478e-931c-811c35a6681b/uploaded_image_0_1765308742959.png"
+                        alt="猫イラスト集" class="thumbnail-main">
+                </div>
+            </div>
+
+            <!-- 右側: タイトルと説明 -->
+            <div class="right-panel">
+                <div class="title-container">
+                    <h1 class="vertical-title">
+                        <span>が</span>
+                        <span>を</span>
+                        <span>に</span>
+                        <span>で</span>
+                        <span>と</span>
+                        <span>へ</span>
+                    </h1>
+                    <div class="description vertical-text">
+                        <p>助詞には、言葉と言葉をくっつけ意味が生まれます。</p>
+                        <p>マウスでクリックして（）内の助詞を止めよう。</p>
+                        <p>きっとなんでも起こってしまうのか...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="click-instruction">クリックして始める</div>
+    </div>
+
+    <!-- 画面2: スロット画面 -->
+    <div id="screen2" class="screen">
+        <div class="split-container">
+            <div class="left-panel"></div>
+
+            <div class="right-panel">
+                <div class="slot-container-wrapper">
+                    <div class="sentence-display">
+                        <span class="word">ねこ</span>
+                        <div class="slot-wrapper" id="slot1-wrapper">
+                            <div class="slot" id="slot1">
+                                <div class="slot-reel"></div>
+                            </div>
+                        </div>
+                        <span class="word">りんご</span>
+                        <div class="slot-wrapper" id="slot2-wrapper">
+                            <div class="slot" id="slot2">
+                                <div class="slot-reel"></div>
+                            </div>
+                        </div>
+                        <span class="word">たべた</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="click-instruction" id="slot-instruction">クリックしてスロットを止めよう</div>
+    </div>
+
+    <!-- 画面3: 結果画面 -->
+    <div id="screen3" class="screen">
+        <div class="split-container">
+            <!-- 左側: 生成されたイラスト -->
+            <div class="left-panel">
+                <div class="result-image-container">
+                    <img id="result-image" src="" alt="結果イラスト">
+                    <div class="image-placeholder">
+                        <p>画像を読み込み中...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右側: 完成した文 -->
+            <div class="right-panel">
+                <div class="result-text-container">
+                    <div class="result-sentence vertical-text" id="result-sentence"></div>
+                </div>
+            </div>
+        </div>
+        <div class="click-instruction">クリックして最初に戻る</div>
+    </div>
+
+    <script src="demo.js"></script>
+</body>
+
+</html>
