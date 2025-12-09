@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>格助詞スロットジェネレーター</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="poster-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="noise-overlay"></div>
+
+    <div class="container">
+        <header>
+            <h1>格助詞スロット</h1>
+        </header>
+
+        <main>
+            <!-- イラスト表示エリア -->
+            <div class="illustration-area">
+                <div class="illustration-placeholder">
+                    🐱
+                </div>
+                <div class="illustration-placeholder">
+                    🍎
+                </div>
+            </div>
+
+            <!-- 文章エリア -->
+            <div class="sentence-container">
+                <div class="sentence">
+                    <span class="word">ねこ</span>
+                    <div class="slot-wrapper">
+                        <div class="slot" id="slot1">
+                            <div class="slot-display">が</div>
+                        </div>
+                    </div>
+                    <span class="word">りんご</span>
+                    <div class="slot-wrapper">
+                        <div class="slot" id="slot2">
+                            <div class="slot-display">お</div>
+                        </div>
+                    </div>
+                    <span class="word">たべた</span>
+                </div>
+            </div>
+
+            <!-- コントロールエリア -->
+            <div class="controls">
+                <button id="startBtn" class="btn btn-start">スタート</button>
+                <div class="instructions">
+                    <p>スタートボタンを押して、スロットをクリックして止めよう！</p>
+                </div>
+            </div>
+
+            <!-- 結果表示エリア -->
+            <div class="result-area" id="resultArea">
+                <h2>結果</h2>
+                <p id="resultText"></p>
+            </div>
+        </main>
+    </div>
+
+    <!-- ポスターオーバーレイ -->
+    <div class="poster-overlay" id="posterOverlay">
+        <div class="poster-container">
+            <button class="close-poster" id="closePoster">×</button>
+            <div class="poster-content">
+                <div class="poster-title" id="posterTitle"></div>
+                <div class="poster-illustration" id="posterIllustration"></div>
+                <div class="poster-subtitle" id="posterSubtitle"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="poster-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

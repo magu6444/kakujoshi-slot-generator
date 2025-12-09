@@ -1,0 +1,193 @@
+/* ポスターオーバーレイ */
+.poster-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.poster-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.poster-container {
+    position: relative;
+    width: 90vw;
+    max-width: 800px;
+    height: 90vh;
+    max-height: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: posterZoomIn 0.6s ease;
+}
+
+@keyframes posterZoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close-poster {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    font-family: 'Shippori Mincho', serif;
+}
+
+.close-poster:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: rotate(90deg);
+}
+
+.poster-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ポスタータイトル */
+.poster-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+    animation: titleFadeIn 0.8s ease 0.3s both;
+}
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ポスターイラスト */
+.poster-illustration {
+    font-size: 12rem;
+    margin: 40px 0;
+    animation: illustrationPop 0.6s ease 0.6s both;
+}
+
+@keyframes illustrationPop {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ポスターサブタイトル */
+.poster-subtitle {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 40px;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    animation: subtitleFadeIn 0.8s ease 0.9s both;
+}
+
+@keyframes subtitleFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+/* レイアウトバリエーション - stacked */
+.poster-content.layout-stacked .poster-title {
+    writing-mode: horizontal-tb;
+}
+
+/* レイアウトバリエーション - diagonal */
+.poster-content.layout-diagonal .poster-title {
+    transform: rotate(-5deg);
+}
+
+/* レイアウトバリエーション - centered */
+.poster-content.layout-centered {
+    justify-content: center;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .poster-content {
+        padding: 40px 20px;
+    }
+
+    .poster-title {
+        font-size: 3rem;
+    }
+
+    .poster-illustration {
+        font-size: 8rem;
+    }
+
+    .poster-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .close-poster {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        top: -10px;
+        right: -10px;
+    }
+}
